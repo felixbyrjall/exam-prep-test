@@ -1,0 +1,13 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "parcel": "^2.10.0"
+  },
+  "scripts": {
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev"
+  }
+}
