@@ -32,4 +32,4 @@ app.put("/api/todos/:id", (req, res) => {
 
 app.use(express.static(path.join("..", "client", "dist")));
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
