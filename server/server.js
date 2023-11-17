@@ -1,11 +1,20 @@
 import express from "express";
-import bodyParser from "body-parser";
 import * as path from "path";
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.static("../client/dist"));
 
-let tasks = [
+app.use((req, res, next) => {
+    if(req.method == "GET" && !req.path.startsWith("/api")) {
+        res.sendFile(path.resolve("../client/dist/index.html"))
+    }else{
+        next();
+    }
+})
+
+app.listen(process.env.PORT || 3000);
+
+/*let tasks = [
     {id: 0, title: "wake up", status: "done"},
     {id: 1, title: "do homework", status: "doing"}
 ];
@@ -32,4 +41,5 @@ app.put("/api/todos/:id", (req, res) => {
 
 app.use(express.static(path.join("..", "client", "dist")));
 
-app.listen(process.env.PORT || 3000);
+
+*/
