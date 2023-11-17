@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {TodoApplication} from "./application";
 import "./application.css";
 import {BrowserRouter, Link} from "react-router-dom";
+import {MoviesRoutes} from "./components/moviesRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-
 
 function Application(){
     return (
@@ -20,11 +18,11 @@ function Application(){
                 <Link to={"/movies"}>List movies</Link>
                 <Link to={"/"}>Event more page</Link>
                 <Link to={"/"}>Event more page</Link>
-                <div className={"divider"} />
+                <div className={"divider"}/>
                 <Link to={"/login"}>Log in</Link>
             </nav>
             <main>
-
+                <MoviesRoutes/>
             </main>
             <footer>Lecture 9: Open ID Connect</footer>
         </>
