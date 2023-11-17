@@ -10,7 +10,7 @@ function Application(){
     return (
         <>
             <header>
-                <h1>User database</h1>
+                <h1>Movie database</h1>
             </header>
             <nav>
                 <Link to={"/"}>Front page</Link>
