@@ -77,7 +77,7 @@ export function Application() {
             <Route path={"*"} element={<h2>404 not found</h2>} />
           </Routes>
         </main>
-        <footer>Lecture 9: Open ID Connect</footer>
+        <footer></footer>
       </MoviesContext.Provider>
     </LoginContext.Provider>
   );
