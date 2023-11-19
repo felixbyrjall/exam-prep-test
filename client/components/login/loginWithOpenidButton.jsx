@@ -13,7 +13,7 @@ export function LoginWithOpenidButton() {
     const discoveryDocument = await res.json();
     const params = {
       response_type: "token",
-      scope: "email",
+      scope: "email profile",
       client_id,
       redirect_uri: window.location.origin + "/login/callback",
     };
