@@ -44,7 +44,7 @@ function Application() {
 
   return (
     <LoginContext.Provider
-      value={{ username, loadUser, clientId: GOOGLE_CLIENT_ID }}
+      value={{ username, loadUser, client_id: GOOGLE_CLIENT_ID }}
     >
       <MoviesContext.Provider
         value={{
