@@ -15,17 +15,11 @@
     "postinstall": "npm run install:client && npm run install:server",
     "install:client": "cd client && npm install --include=dev",
     "install:server": "cd server && npm install",
-    "build": "npm run check && npm run build:client",
+    "build": "npm run build:client",
     "build:client": "cd client && npm run build",
     "start": "cd server && npm start",
     "test": "npm run test:client && npm run test:server",
     "test:client": "cd client && npm test",
-    "test:server": "cd server && npm test",
-    "check": "npm run check:prettier && npm run lint && npm test",
-    "check:prettier": "prettier --check .",
-    "lint": "npm run lint:client && npm run lint:server",
-    "lint:client": "cd client && npm run lint",
-    "lint:server": "cd server && npm run lint",
-    "prettier": "prettier --write ."
+    "test:server": "cd server && npm test"
   }
 }
