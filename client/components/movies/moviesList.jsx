@@ -4,13 +4,22 @@ import { MoviesContext } from "./moviesContext";
 export function MoviesList() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
 
   const { fetchMovies } = useContext(MoviesContext);
 
   async function loadMovies() {
     setLoading(true);
-    setMovies(await fetchMovies());
-    setLoading(false);
+    setMovies([]);
+    setError(undefined);
+
+    try {
+      setMovies(await fetchMovies());
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
