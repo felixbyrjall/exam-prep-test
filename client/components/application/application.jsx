@@ -6,6 +6,7 @@ import { LoginNavLink } from "../login/loginNavLink";
 import { MoviesRoutes } from "../movies/moviesRoutes";
 import { LoginPage } from "../login/loginPage";
 import { ProfilePage } from "../profile/profilePage";
+import { LoginCallback } from "../login/loginCallback";
 
 const GOOGLE_CLIENT_ID =
   "625916858663-tenc6s13hukrgg4tueqi62hg08v6o3ka.apps.googleusercontent.com";
@@ -71,6 +72,7 @@ export function Application() {
           <MoviesRoutes />
           <Routes>
             <Route path={"/login"} element={<LoginPage />} />
+            <Route path={"/login/callback"} element={<LoginCallback />} />
             <Route path={"/profile"} element={<ProfilePage />} />
             <Route path={"*"} element={<h2>404 not found</h2>} />
           </Routes>
