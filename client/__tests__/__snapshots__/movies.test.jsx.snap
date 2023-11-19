@@ -13,3 +13,14 @@ exports[`movies react application shows loaded movies 1`] = `
   </div>,
 ]
 `;
+
+exports[`movies react application shows loading screen 1`] = `
+[
+  <h2>
+    List the movies
+  </h2>,
+  <div>
+    Spinner
+  </div>,
+]
+`;
