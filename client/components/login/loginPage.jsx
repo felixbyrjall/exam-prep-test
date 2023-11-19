@@ -1,15 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const res = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong! err: " + res.statusText);
+    }
+    navigate("/");
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login Page</h2>
       <div>
-        <input type="text" />
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </div>
       <div>
-        <input type="text" />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </div>
+      <div>
+        <button>Log in</button>
+      </div>
+      <pre>{JSON.stringify({ username, password })}</pre>
     </form>
   );
 }
