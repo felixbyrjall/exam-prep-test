@@ -27,6 +27,7 @@ export function Application() {
   }
 
   const [username, setUsername] = useState();
+  const [user, setUser] = useState();
 
   async function loadUser() {
     const res = await fetch("/api/login");
@@ -34,6 +35,7 @@ export function Application() {
       throw new Error("Something went wrong fetching user " + res.statusText);
     }
     const user = await res.json();
+    setUser(user);
     setUsername(user.username);
   }
 
@@ -45,6 +47,7 @@ export function Application() {
     <LoginContext.Provider
       value={{
         username,
+        user,
         loadUser,
         client_id: GOOGLE_CLIENT_ID,
       }}
