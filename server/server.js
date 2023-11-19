@@ -7,6 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  const { username } = req.cookies;
+  req.user = { username };
+  next();
+});
+
 const loginRouter = express.Router();
 loginRouter.post("", (req, res) => {
   res.cookie("username", req.body.username);
@@ -14,8 +20,7 @@ loginRouter.post("", (req, res) => {
 });
 
 loginRouter.get("", (req, res) => {
-  const { username } = req.cookies;
-  res.send({ username });
+  res.send(req.user);
 });
 
 app.use("/api/login", loginRouter);
