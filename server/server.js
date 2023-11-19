@@ -13,6 +13,11 @@ loginRouter.post("", (req, res) => {
   res.sendStatus(204);
 });
 
+loginRouter.get("", (req, res) => {
+  const { username } = req.cookies;
+  res.send({ username });
+});
+
 app.use("/api/login", loginRouter);
 
 app.use(express.static("../client/dist"));
@@ -26,4 +31,5 @@ app.use((req, res, next) => {
   }
 });
 
+// eslint-disable-next-line no-undef
 app.listen(process.env.PORT || 3000);
