@@ -4,6 +4,7 @@ import "./application.css";
 import { BrowserRouter, Link } from "react-router-dom";
 import { MoviesRoutes } from "./components/movies/moviesRoutes";
 import { MoviesContext } from "./components/movies/moviesContext";
+import { LoginNavLink } from "./components/login/loginNavLink";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -22,7 +23,12 @@ function Application() {
   }
 
   return (
-    <MoviesContext.Provider value={{ fetchMovies, onAddMovie }}>
+    <MoviesContext.Provider
+      value={{
+        fetchMovies,
+        onAddMovie,
+      }}
+    >
       <header>
         <h1>Movie database</h1>
       </header>
@@ -33,7 +39,7 @@ function Application() {
         <Link to={"/"}>Event more page</Link>
         <Link to={"/"}>Event more page</Link>
         <div className={"divider"} />
-        <Link to={"/login"}>Log in</Link>
+        <LoginNavLink />
       </nav>
       <main>
         <MoviesRoutes />
