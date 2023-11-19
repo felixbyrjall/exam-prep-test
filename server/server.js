@@ -2,6 +2,8 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import * as path from "path";
 import dotenv from "dotenv";
+import { createMoviesRouter, moviesApi } from "./moviesApi.js";
+import { MongoClient } from "mongodb";
 
 dotenv.config();
 const app = express();
@@ -56,6 +58,8 @@ loginRouter.delete("", (req, res) => {
   res.sendStatus(204);
 });
 
+app.use("/api/movies", moviesApi);
+
 app.use("/api/login", loginRouter);
 
 app.use(express.static("../client/dist"));
@@ -67,6 +71,15 @@ app.use((req, res, next) => {
   } else {
     next();
   }
+});
+
+// eslint-disable-next-line no-undef
+const url = process.env.MONGO_URL;
+const client = new MongoClient(url);
+
+client.connect().then((connection) => {
+  const db = connection.db("sample_mflix");
+  createMoviesRouter(db);
 });
 
 // eslint-disable-next-line no-undef
