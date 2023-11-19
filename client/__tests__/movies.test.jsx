@@ -28,9 +28,9 @@ describe("movies react application", () => {
 
   it("add a new movie", async () => {
     // A test that adds a new movie
-    const onAddMovie = jest.fn();
+    const postNewMovie = jest.fn();
     const component = renderer.create(
-      <MoviesContext.Provider value={{ onAddMovie }}>
+      <MoviesContext.Provider value={{ postNewMovie }}>
         <AddMovieForm />
       </MoviesContext.Provider>,
     );
@@ -45,7 +45,7 @@ describe("movies react application", () => {
       });
     });
 
-    expect(onAddMovie).toBeCalledWith({
+    expect(postNewMovie).toBeCalledWith({
       title: "My test movie",
     });
   });
