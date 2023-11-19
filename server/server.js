@@ -22,6 +22,11 @@ loginRouter.post("", (req, res) => {
   res.sendStatus(204);
 });
 
+loginRouter.post("/access_token", (req, res) => {
+  res.cookie("access_token", req.body.access_token, { signed: true });
+  res.sendStatus(204);
+});
+
 loginRouter.get("", (req, res) => {
   res.send(req.user);
 });
