@@ -9,6 +9,9 @@ import { LoginPage } from "./components/login/loginPage";
 import { ProfilePage } from "./components/profile/profilePage";
 import { LoginContext } from "./components/login/loginContext";
 
+const GOOGLE_CLIENT_ID =
+  "625916858663-tenc6s13hukrgg4tueqi62hg08v6o3ka.apps.googleusercontent.com";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
@@ -40,7 +43,9 @@ function Application() {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ username, loadUser }}>
+    <LoginContext.Provider
+      value={{ username, loadUser, clientId: GOOGLE_CLIENT_ID }}
+    >
       <MoviesContext.Provider
         value={{
           fetchMovies,
