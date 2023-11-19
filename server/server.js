@@ -52,16 +52,17 @@ loginRouter.post("/access_token", (req, res) => {
 loginRouter.get("", (req, res) => {
   res.send(req.user);
 });
+
+//clears cookies when logging out
 loginRouter.delete("", (req, res) => {
   res.clearCookie("username");
   res.clearCookie("access_token");
   res.sendStatus(204);
 });
 
+//Routes
 app.use("/api/movies", moviesApi);
-
 app.use("/api/login", loginRouter);
-
 app.use(express.static("../client/dist"));
 
 // Express middleware for default route
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 const url = process.env.MONGO_URL;
 const client = new MongoClient(url);
 
+//connection to the sample database in mongodb
 client.connect().then((connection) => {
   const db = connection.db("sample_mflix");
   createMoviesRouter(db);
