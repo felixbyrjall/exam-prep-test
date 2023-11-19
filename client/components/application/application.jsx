@@ -12,17 +12,14 @@ const GOOGLE_CLIENT_ID =
   "625916858663-tenc6s13hukrgg4tueqi62hg08v6o3ka.apps.googleusercontent.com";
 
 export function Application() {
-  const [movies, setMovies] = useState([
-    {
-      title: "Oppenheimer",
-    },
-  ]);
+  const [movies, setMovies] = useState();
 
-  function fetchMovies() {
-    return movies;
+  async function fetchMovies() {
+    const res = await fetch("/api/movies");
+    return await res.json();
   }
 
-  function onAddMovie(movie) {
+  function postNewMovie(movie) {
     setMovies((oldMovies) => [...oldMovies, movie]);
   }
 
@@ -55,7 +52,7 @@ export function Application() {
       <MoviesContext.Provider
         value={{
           fetchMovies,
-          onAddMovie,
+          postNewMovie,
         }}
       >
         <></>
