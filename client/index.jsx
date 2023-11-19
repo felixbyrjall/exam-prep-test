@@ -40,7 +40,7 @@ function Application() {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ username }}>
+    <LoginContext.Provider value={{ username, loadUser }}>
       <MoviesContext.Provider
         value={{
           fetchMovies,
