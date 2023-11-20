@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../login/loginContext";
 import { useNavigate } from "react-router-dom";
+import "../../resources/styles/styles.css";
 
 export function ProfilePage() {
   const navigate = useNavigate();
-  const { username, loadUser, user } = useContext(LoginContext);
+  const { user, loadUser } = useContext(LoginContext);
 
   async function handleSubmitLogout(e) {
     e.preventDefault();
@@ -18,17 +19,34 @@ export function ProfilePage() {
     navigate("/");
   }
 
-  return (
-    <>
-      <h2>Profile page</h2>
-      <div>Username: {username}</div>
+  if (!user) {
+    return <p>Loading...</p>; // or any other handling for not logged in state
+  }
 
-      <img src={user.picture} alt={"profile picture"} />
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+  return (
+    <div>
+      <h2>Profile page</h2>
+      {!!user.picture ? (
+        <img className={"pfp"} src={user.picture} alt={"profile picture"} />
+      ) : (
+        <picture>
+          <source
+            srcSet={require("../../resources/images/dark-pfp.jpg")}
+            media="(prefers-color-scheme: dark)"
+          />
+          <img
+            className={"pfp"}
+            src={require("../../resources/images/default-pfp.jpg")}
+            alt={"default profile picture"}
+          />
+        </picture>
+      )}
+      <div>Name: {user.name}</div>
+      <div>Username: {user.username}</div>
 
       <form onSubmit={handleSubmitLogout}>
         <button>Log out</button>
       </form>
-    </>
+    </div>
   );
 }
