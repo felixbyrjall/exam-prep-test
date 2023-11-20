@@ -4,7 +4,6 @@ import { createMoviesRouter, moviesApi } from "../moviesApi.js";
 import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const app = express();
@@ -12,7 +11,8 @@ app.use(bodyParser.json());
 
 beforeAll(async () => {
   app.use(moviesApi);
-  const url = process.env.MONGODB_URL;
+  // eslint-disable-next-line no-undef
+  const url = process.env.MONGO_URL;
   const client = new MongoClient(url);
   const db = (await client.connect()).db("unit_tests");
   createMoviesRouter(db);
