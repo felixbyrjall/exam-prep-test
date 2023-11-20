@@ -23,7 +23,7 @@ app.use(async (req, res, next) => {
 
     const userinfoRes = await fetch(discoveryDoc.userinfo_endpoint, {
       headers: {
-        Authorization: `Bearer  ${access_token}`,
+        Authorization: `Bearer ${access_token}`,
       },
     });
     if (!userinfoRes.ok) {
@@ -63,7 +63,7 @@ loginRouter.delete("", (req, res) => {
 //Routes
 app.use("/api/movies", moviesApi);
 app.use("/api/login", loginRouter);
-app.use(express.static("../client/dist"));
+app.use(express.static(path.resolve("../client/dist")));
 
 // Express middleware for default route
 app.use((req, res, next) => {

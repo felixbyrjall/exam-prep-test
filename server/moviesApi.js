@@ -1,7 +1,5 @@
 import express from "express";
-import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 export const moviesApi = express.Router();
@@ -24,6 +22,7 @@ export function createMoviesRouter(db) {
       .toArray();
     res.json(movies);
   });
+
   moviesApi.post("", async (req, res) => {
     const { title, plot, year, metacritic, countries } = req.body;
     await db
