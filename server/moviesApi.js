@@ -11,7 +11,6 @@ export function createMoviesRouter(db) {
       .collection("movies")
       .find()
       .filter({
-        countries: "Norway",
         metacritic: {
           $exists: true,
         },
@@ -23,7 +22,7 @@ export function createMoviesRouter(db) {
     res.json(movies);
   });
 
-  moviesApi.post("", async (req, res) => {
+  moviesApi.post("/", async (req, res) => {
     const { title, plot, year, metacritic, countries } = req.body;
     await db
       .collection("movies")
