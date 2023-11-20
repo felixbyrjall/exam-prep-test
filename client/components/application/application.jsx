@@ -7,8 +7,8 @@ import { LoginPage } from "../login/loginPage";
 import { ProfilePage } from "../profile/profilePage";
 import { LoginCallback } from "../login/loginCallback";
 
-import { MoviesList } from "../movies/moviesList";
-import { AddMovieForm } from "../movies/addMovieForm";
+import { ListMovies } from "../movies/listMovies";
+import { AddMovies } from "../movies/addMovies";
 
 // eslint-disable-next-line no-undef
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
@@ -61,8 +61,8 @@ export function Application() {
         <main>
           <Routes>
             <Route path={"/"} element={<h2>Front page</h2>} />
-            <Route path={"/movies"} element={<MoviesList />} />
-            <Route path={"/movies/new"} element={<AddMovieForm />} />
+            <Route path={"/movies"} element={<ListMovies />} />
+            <Route path={"/movies/new"} element={<AddMovies />} />
             <Route path={"/login"} element={<LoginPage />} />
             <Route path={"/login/callback"} element={<LoginCallback />} />
             <Route path={"/profile"} element={<ProfilePage />} />

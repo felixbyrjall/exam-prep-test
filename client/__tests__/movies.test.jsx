@@ -1,10 +1,10 @@
 import renderer, { act } from "react-test-renderer";
-import { MoviesList } from "../components/movies/moviesList";
+import { ListMovies } from "../components/movies/listMovies";
 import { MoviesContext } from "../components/movies/moviesContext";
-import { AddMovieForm } from "../components/movies/addMovieForm";
+import { AddMovies } from "../components/movies/addMovies";
 describe("movies react application", () => {
   it("shows loading screen", () => {
-    const component = renderer.create(<MoviesList />);
+    const component = renderer.create(<ListMovies />);
     expect(component).toMatchSnapshot();
   });
 
@@ -18,7 +18,7 @@ describe("movies react application", () => {
     await act(async () => {
       component = renderer.create(
         <MoviesContext.Provider value={{ fetchMovies }}>
-          <MoviesList />
+          <ListMovies />
         </MoviesContext.Provider>,
       );
     });
@@ -31,7 +31,7 @@ describe("movies react application", () => {
     const postNewMovie = jest.fn();
     const component = renderer.create(
       <MoviesContext.Provider value={{ postNewMovie }}>
-        <AddMovieForm />
+        <AddMovies />
       </MoviesContext.Provider>,
     );
     await act(async () => {

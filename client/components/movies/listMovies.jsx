@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MoviesContext } from "./moviesContext";
 
-export function MoviesList() {
+export function ListMovies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -45,9 +45,8 @@ export function MoviesList() {
         {movies.map((m) => (
           <div key={m._id}>
             <h4>
-              {m.title} ({m.year})
+              {m.title} ({m.year}) - Metacritic: {m.metacritic}
             </h4>
-            <p>{m.plot}</p>
           </div>
         ))}
       </MoviesContext.Provider>
