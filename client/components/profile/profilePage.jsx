@@ -41,8 +41,8 @@ export function ProfilePage() {
       ) : (
         <img className={"pfp"} src={user.picture} alt={"profile picture"} />
       )}
-      <div>Name: {user.name}</div>
-      <div>Username: {user.username}</div>
+
+      <div>Name: {user.name || user.username}</div>
       <form onSubmit={handleSubmitLogout}>
         <button>Log out</button>
       </form>
