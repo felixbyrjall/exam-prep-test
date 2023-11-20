@@ -26,9 +26,7 @@ export function ProfilePage() {
   return (
     <div>
       <h2>Profile page</h2>
-      {!!user.picture ? (
-        <img className={"pfp"} src={user.picture} alt={"profile picture"} />
-      ) : (
+      {!user.picture ? (
         <picture>
           <source
             srcSet={require("../../resources/images/dark-pfp.jpg")}
@@ -40,10 +38,11 @@ export function ProfilePage() {
             alt={"default profile picture"}
           />
         </picture>
+      ) : (
+        <img className={"pfp"} src={user.picture} alt={"profile picture"} />
       )}
       <div>Name: {user.name}</div>
       <div>Username: {user.username}</div>
-
       <form onSubmit={handleSubmitLogout}>
         <button>Log out</button>
       </form>
